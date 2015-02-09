@@ -1,0 +1,66 @@
+<%
+
+var usage =[{"apiName" : "Hardware Repo(admin)", "count" : 3, "version" : "1"}, {"apiName" : "Hardware Repo(admin)", "count" : 3, "version" : "2"}, {"apiName" : "Net Usage Analyser(admin)", "count" : 3, "version" : "1"}, {"apiName" : "Travel Booking(admin)", "count" : 3, "version" : "1"}, {"apiName" : "Travel Claims(admin)", "count" : 3, "version" : "1"}, {"apiName" : "pizza(admin)", "count" : 3, "version" : "1"}, {"apiName" : "sample(admin)", "count" : 3, "version" : "1"}, {"apiName" : "webappsample(admin)", "count" : 3, "version" : "1"}, {"apiName" : "Conference Booking(admin)", "count" : 1, "version" : "1"}, {"apiName" : "Event Management(admin)", "count" : 1, "version" : "1"}, {"apiName" : "MyApp(test)", "count" : 1, "version" : "1"}, {"apiName" : "Sales Tracking Portal(admin)", "count" : 1, "version" : "1"}, {"apiName" : "loooooooooooooooooooongnaaaaaaaaaaaaaame(admin)", "count" : 1, "version" : "1"}, {"apiName" : "test(admin)", "count" : 1, "version" : "1"}, {"apiName" : "testapp12(admin)", "count" : 1, "version" : "1"}, {"apiName" : "testapp2(admin)", "count" : 1, "version" : "1"}]
+
+		var obj, result;
+   			var webapps = [];
+
+
+        			for(x=0;x<usage.length;x++){
+
+
+        				var webappIndex = -1;
+        				var webappVersionIndex = -1;
+                       // log.info(x+" webapps length---"+webapps.length);
+        				for(y=0;y<webapps.length;y++){
+
+        					if(webapps[y][0] == usage[x].apiName){
+
+        						webappIndex = y;
+        						var z;
+        						for(z=0;z<webapps[y][1].length;z++){
+        							if(webapps[y][1][z][0] == usage[x].version){
+        								webappVersionIndex = z;
+        								break;
+        							}
+        						}
+        						if((webappVersionIndex == -1) && (z == webapps[y].length)){
+        							break;
+        						}
+        					}
+        				}
+
+        				if(webappIndex == -1){
+        					var version = [];
+        					var requestCount = [];
+
+        					version.push([usage[x].version,usage[x].count]);
+        					webapps.push([usage[x].apiName,version]);
+        				}else{
+        					if(webappVersionIndex == -1){
+        						var requestCount = [];
+
+        						webapps[webappIndex][1].push([usage[x].version,usage[x].count]);
+        					}
+        					else{
+        						webapps[webappIndex][1][webappVersionIndex][1].push([usage[x].userId]);
+        					}
+        				}
+
+        			}
+
+        			if (usage == null) {
+        				obj = {
+        					error:true
+        				};
+        			} else {
+        				obj = {
+        					error:false,
+        					webapps:webapps
+        				};
+        			}
+
+        			print(webapps);
+
+
+%>
