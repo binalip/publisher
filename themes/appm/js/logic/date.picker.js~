@@ -1,7 +1,7 @@
 var to = new Date();
 var from = new Date(to.getTime() - 1000 * 60 * 60 * 24 * 101);
 var currentDay = new Date(to.getFullYear(), to.getMonth(), to.getDate(),to.getHours(),to.getMinutes());
-
+alert(to)
 
 //date picker
 $('#today-btn').on('click',function(){
@@ -53,7 +53,7 @@ $('#date-range').dateRangePicker(
          var from = convertDate(obj.date1);
          var to = convertDate(obj.date2);
          $('#date-range').val(from + " to "+ to);
-         //alert("dateRange Value"+$('#date-range').val())
+         alert("dateRange Value"+$('#date-range').val())
          drawGraphs();
     })
     .bind('datepicker-close',function()

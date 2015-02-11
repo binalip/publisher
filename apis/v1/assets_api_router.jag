@@ -20,6 +20,7 @@ require('/modules/publisher.js').exec(function(ctx) {
 		var username = server.current(session).username;
 		var tenantId = server.current(session).tenantId;
 		var startDate = context.post.startDate;
+
 		var endDate = context.post.endDate;
 
 		var appMgtProviderObj = new appmgtPublisher.APIProvider(stringify(username));
@@ -32,6 +33,7 @@ require('/modules/publisher.js').exec(function(ctx) {
 		var month = (date.getMonth() + 1);
 
         		endDate = date.getFullYear()+'-'+date.getMonth()+'-'+date.getDate();
+        		//alert(endDate);
 
                 if (date.getMonth().toString().length < 2) {
                     endDate = date.getFullYear() + '-' + '0' + month + '-' + date.getDate();
