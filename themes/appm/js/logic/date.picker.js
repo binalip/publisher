@@ -1,5 +1,5 @@
 var to = new Date();
-var from = new Date(to.getTime() - 1000 * 60 * 60 * 24 * 101);
+var from = new Date(to.getTime() - 1000 * 60 * 60 * 24 * 104);
 var currentDay = new Date(to.getFullYear(), to.getMonth(), to.getDate(),to.getHours(),to.getMinutes());
 
 
@@ -60,7 +60,7 @@ $('#date-range').dateRangePicker(
     {
     });
 
-   // $('#date-range').data('dateRangePicker').setDateRange(from,to);
+    $('#date-range').data('dateRangePicker').setDateRange(from,to);
 
 
 
